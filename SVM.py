@@ -32,7 +32,7 @@ def get_stock_data(stock, start_day):
     # ).filter(valuation.code.in_([stock]))
     # data = get_fundamentals_continuously(q, end_date=today, count=3000, panel=False)
 
-    data = pd.read_sql("select * from %s where day <= '%s' order by day desc limit 2000" % ('x' + stock[:6], start_day),
+    data = pd.read_sql("select * from %s where day <= '%s' order by day desc limit 2000" % ('xshe' + stock[:6], start_day),
                        con=con)
     data = data.iloc[::-1]
     data.index = range(len(data))
@@ -132,7 +132,7 @@ cur = con.cursor()
 
 result_dic = {}
 final_result = {}
-auth('18611980865', 'Th503221')
+# auth('18611980865', 'Th503221')
 stock_list = get_index_stocks('000300.XSHG')
 
 all_days = get_trade_days(end_date=today, count=1000)
