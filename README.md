@@ -1,3 +1,2 @@
 # QI-for-ice-cream
-without any description， temporary.   
-just some attempts in machine learning
+冰淇淋小组的大创成果
