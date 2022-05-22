@@ -33,7 +33,7 @@ def get_stock_data(stock, start_day):
     # ).filter(valuation.code.in_([stock]))
     # data = get_fundamentals_continuously(q, end_date=today, count=3000, panel=False)
 
-    data = pd.read_sql("select * from %s where day <= '%s' order by day desc limit 2000" % ('x' + stock[:6], start_day),
+    data = pd.read_sql("select * from %s where day <= '%s' order by day desc limit 2000" % ('xshe' + stock[:6], start_day),
                        con=con)
     data = data.iloc[::-1]
     data.index = range(len(data))
@@ -114,7 +114,7 @@ def main():
     final_result = {}
     for day in mouth_days[:1]:
         result_dic[day] = []
-        for stock in stock_list[:1]:
+        for stock in stock_list:
             print("获取股票数据；")
             data = get_stock_data(stock, day)
             if len(data) < 100:
@@ -139,7 +139,7 @@ con = pymysql.connect(host='localhost', port=3306, user='root', passwd='zmq26131
 cur = con.cursor()
 
 result_dic = {}
-auth('18611980865', 'Th503221')
+# auth('18611980865', 'Th503221')
 stock_list = get_index_stocks('000300.XSHG')
 
 all_days = get_trade_days(end_date=today, count=1000)
